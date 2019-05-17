@@ -5,7 +5,7 @@ const buildMarker = require('./marker.js');
 mapboxgl.accessToken =
   'pk.eyJ1Ijoia2Vuem93b25nODYiLCJhIjoiY2p2Mml4ZmxvMW85YjQ0bTI1d2dhaHJqYyJ9.o3ZXgf5YUqjKekQEHcFJxw';
 
-const home = [74.017, 40.64]; // NY
+const home = [-74.017, 40.64]; // NY
 // const fullstackCoords = [-87.6320523, 41.8881084] // CHI
 
 const map = new mapboxgl.Map({
