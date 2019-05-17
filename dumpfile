@@ -1,0 +1,423 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 11.2
+-- Dumped by pg_dump version 11.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: activities; Type: TABLE; Schema: public; Owner: Kenzo-Wong
+--
+
+CREATE TABLE public.activities (
+    id integer NOT NULL,
+    name character varying(255),
+    age_range character varying(255),
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL,
+    "placeId" integer
+);
+
+
+ALTER TABLE public.activities OWNER TO "Kenzo-Wong";
+
+--
+-- Name: activities_id_seq; Type: SEQUENCE; Schema: public; Owner: Kenzo-Wong
+--
+
+CREATE SEQUENCE public.activities_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.activities_id_seq OWNER TO "Kenzo-Wong";
+
+--
+-- Name: activities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Kenzo-Wong
+--
+
+ALTER SEQUENCE public.activities_id_seq OWNED BY public.activities.id;
+
+
+--
+-- Name: hotels; Type: TABLE; Schema: public; Owner: Kenzo-Wong
+--
+
+CREATE TABLE public.hotels (
+    id integer NOT NULL,
+    name character varying(255),
+    num_stars double precision,
+    amenities character varying(255),
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL,
+    "placeId" integer
+);
+
+
+ALTER TABLE public.hotels OWNER TO "Kenzo-Wong";
+
+--
+-- Name: hotels_id_seq; Type: SEQUENCE; Schema: public; Owner: Kenzo-Wong
+--
+
+CREATE SEQUENCE public.hotels_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.hotels_id_seq OWNER TO "Kenzo-Wong";
+
+--
+-- Name: hotels_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Kenzo-Wong
+--
+
+ALTER SEQUENCE public.hotels_id_seq OWNED BY public.hotels.id;
+
+
+--
+-- Name: places; Type: TABLE; Schema: public; Owner: Kenzo-Wong
+--
+
+CREATE TABLE public.places (
+    id integer NOT NULL,
+    address character varying(255),
+    city character varying(255),
+    state character varying(255),
+    phone character varying(255),
+    location double precision[],
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.places OWNER TO "Kenzo-Wong";
+
+--
+-- Name: places_id_seq; Type: SEQUENCE; Schema: public; Owner: Kenzo-Wong
+--
+
+CREATE SEQUENCE public.places_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.places_id_seq OWNER TO "Kenzo-Wong";
+
+--
+-- Name: places_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Kenzo-Wong
+--
+
+ALTER SEQUENCE public.places_id_seq OWNED BY public.places.id;
+
+
+--
+-- Name: restaurants; Type: TABLE; Schema: public; Owner: Kenzo-Wong
+--
+
+CREATE TABLE public.restaurants (
+    id integer NOT NULL,
+    name character varying(255),
+    cuisine character varying(255),
+    price integer,
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL,
+    "placeId" integer
+);
+
+
+ALTER TABLE public.restaurants OWNER TO "Kenzo-Wong";
+
+--
+-- Name: restaurants_id_seq; Type: SEQUENCE; Schema: public; Owner: Kenzo-Wong
+--
+
+CREATE SEQUENCE public.restaurants_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.restaurants_id_seq OWNER TO "Kenzo-Wong";
+
+--
+-- Name: restaurants_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Kenzo-Wong
+--
+
+ALTER SEQUENCE public.restaurants_id_seq OWNED BY public.restaurants.id;
+
+
+--
+-- Name: activities id; Type: DEFAULT; Schema: public; Owner: Kenzo-Wong
+--
+
+ALTER TABLE ONLY public.activities ALTER COLUMN id SET DEFAULT nextval('public.activities_id_seq'::regclass);
+
+
+--
+-- Name: hotels id; Type: DEFAULT; Schema: public; Owner: Kenzo-Wong
+--
+
+ALTER TABLE ONLY public.hotels ALTER COLUMN id SET DEFAULT nextval('public.hotels_id_seq'::regclass);
+
+
+--
+-- Name: places id; Type: DEFAULT; Schema: public; Owner: Kenzo-Wong
+--
+
+ALTER TABLE ONLY public.places ALTER COLUMN id SET DEFAULT nextval('public.places_id_seq'::regclass);
+
+
+--
+-- Name: restaurants id; Type: DEFAULT; Schema: public; Owner: Kenzo-Wong
+--
+
+ALTER TABLE ONLY public.restaurants ALTER COLUMN id SET DEFAULT nextval('public.restaurants_id_seq'::regclass);
+
+
+--
+-- Data for Name: activities; Type: TABLE DATA; Schema: public; Owner: Kenzo-Wong
+--
+
+COPY public.activities (id, name, age_range, "createdAt", "updatedAt", "placeId") FROM stdin;
+1	Handball	All	2019-05-16 21:00:51.089-04	2019-05-16 21:00:51.089-04	34
+8	Chinatown Ice Cream Factory	All	2019-05-16 21:00:51.15-04	2019-05-16 21:00:51.15-04	41
+12	Brooklyn Bridge Park	All	2019-05-16 21:00:51.164-04	2019-05-16 21:00:51.164-04	45
+3	South Street Seaport	All	2019-05-16 21:00:51.147-04	2019-05-16 21:00:51.147-04	36
+7	Staten Island Ferry Whitehall Terminal	All	2019-05-16 21:00:51.149-04	2019-05-16 21:00:51.149-04	40
+13	Ellis Island Immigration Museum	All	2019-05-16 21:00:51.164-04	2019-05-16 21:00:51.164-04	46
+4	Ground Zero	All	2019-05-16 21:00:51.147-04	2019-05-16 21:00:51.147-04	37
+9	Scott's Pizza Tours	All	2019-05-16 21:00:51.154-04	2019-05-16 21:00:51.154-04	42
+14	Washington Square Park	All	2019-05-16 21:00:51.165-04	2019-05-16 21:00:51.165-04	47
+5	National September 11th Memorial & Museum	All	2019-05-16 21:00:51.148-04	2019-05-16 21:00:51.148-04	38
+10	Blue Man Group	All	2019-05-16 21:00:51.15-04	2019-05-16 21:00:51.15-04	43
+15	Union Square Holiday Market	All	2019-05-16 21:00:51.165-04	2019-05-16 21:00:51.165-04	48
+2	Mahayana Temple Buddhist Association	All	2019-05-16 21:00:51.09-04	2019-05-16 21:00:51.09-04	35
+6	Battery Park	All	2019-05-16 21:00:51.148-04	2019-05-16 21:00:51.148-04	39
+11	Apple Store	All	2019-05-16 21:00:51.154-04	2019-05-16 21:00:51.154-04	44
+16	Strand Bookstore	All	2019-05-16 21:00:51.166-04	2019-05-16 21:00:51.166-04	49
+\.
+
+
+--
+-- Data for Name: hotels; Type: TABLE DATA; Schema: public; Owner: Kenzo-Wong
+--
+
+COPY public.hotels (id, name, num_stars, amenities, "createdAt", "updatedAt", "placeId") FROM stdin;
+1	Park Hyatt Tokyo	5	Too rich for your blood	2019-05-16 21:00:51.056-04	2019-05-16 21:00:51.056-04	1
+2	Chris' House	1	Free Wifi, Chris	2019-05-16 21:00:51.059-04	2019-05-16 21:00:51.059-04	2
+3	Andaz Wall Street	4	Pool, Free Wi-Fi	2019-05-16 21:00:51.06-04	2019-05-16 21:00:51.06-04	4
+4	The Ritz-Carlton New York, Battery Park	4.5	24 hour Gym, Paid Wi-Fi	2019-05-16 21:00:51.061-04	2019-05-16 21:00:51.061-04	5
+5	Hotel Mulberry	4.5	Free Wi-Fi	2019-05-16 21:00:51.06-04	2019-05-16 21:00:51.06-04	3
+6	Smyth TriBeCa	3.5	24 hour Gym	2019-05-16 21:00:51.062-04	2019-05-16 21:00:51.062-04	6
+7	Double Tree	3.5	24 hour Gym	2019-05-16 21:00:51.063-04	2019-05-16 21:00:51.063-04	8
+8	Hotel 91	3.5	Free Wi-Fi	2019-05-16 21:00:51.063-04	2019-05-16 21:00:51.063-04	9
+9	Wall Street Inn	4	Free Wi-Fi	2019-05-16 21:00:51.061-04	2019-05-16 21:00:51.061-04	7
+10	Conrad New York Hotel	3.5	Paid Wi-Fi, Dogs Allowed	2019-05-16 21:00:51.065-04	2019-05-16 21:00:51.065-04	10
+11	Millenium Hilton Hotel	3.5	Paid Wi-Fi	2019-05-16 21:00:51.065-04	2019-05-16 21:00:51.065-04	11
+12	US Pacific Hotel	2	Accepts Credit Cards	2019-05-16 21:00:51.066-04	2019-05-16 21:00:51.066-04	12
+13	Gild Hall, a Thompson Hotel	4	Paid Wi-Fi	2019-05-16 21:00:51.066-04	2019-05-16 21:00:51.066-04	13
+14	W New York	3.5	Pool, 24 hour Gym, Paid Wi-Fi	2019-05-16 21:00:51.067-04	2019-05-16 21:00:51.067-04	14
+15	New York Marriott Downtown	3.5	24 hour Gym, Paid Wi-Fi	2019-05-16 21:00:51.067-04	2019-05-16 21:00:51.067-04	15
+16	Cosmopolitan Hotel	3.5	Free Wif-Fi	2019-05-16 21:00:51.068-04	2019-05-16 21:00:51.068-04	16
+17	Club Quarters	4	Free Wif-Fi	2019-05-16 21:00:51.068-04	2019-05-16 21:00:51.068-04	17
+\.
+
+
+--
+-- Data for Name: places; Type: TABLE DATA; Schema: public; Owner: Kenzo-Wong
+--
+
+COPY public.places (id, address, city, state, phone, location, "createdAt", "updatedAt") FROM stdin;
+1	3-7-1-2	Nishishinjuku	Tokyo	123-123-1232	{139.691000000000003,35.6859999999999999}	2019-05-16 21:00:51.219-04	2019-05-16 21:00:51.219-04
+2	1237 65th St	Brooklyn	NY	111-111-1111	{-74.0030000000000001,40.6270000000000024}	2019-05-16 21:00:51.221-04	2019-05-16 21:00:51.221-04
+4	75 Wall St	New York	NY	123-456-7890	{-74.007624000000007,40.7051370000000006}	2019-05-16 21:00:51.222-04	2019-05-16 21:00:51.222-04
+5	Two West Street	New York	NY	123-456-7890	{-74.0172409999999985,40.7054169999999971}	2019-05-16 21:00:51.224-04	2019-05-16 21:00:51.224-04
+3	52 Mulberry St	New York	NY	123-456-7890	{-73.9995420000000053,40.7153169999999989}	2019-05-16 21:00:51.223-04	2019-05-16 21:00:51.223-04
+6	85 West Broadway	New York	NY	123-456-7890	{-74.0093009999999936,40.7150760000000034}	2019-05-16 21:00:51.225-04	2019-05-16 21:00:51.225-04
+8	8 Stone St	New York	NY	123-456-7890	{-74.0123499999999979,40.7039609999999996}	2019-05-16 21:00:51.227-04	2019-05-16 21:00:51.227-04
+7	9 S William St	New York	NY	123-456-7890	{-74.010272999999998,40.7045809999999975}	2019-05-16 21:00:51.224-04	2019-05-16 21:00:51.224-04
+9	91 E Broadway	New York	NY	123-456-7890	{-73.993623999999997,40.7134270000000029}	2019-05-16 21:00:51.235-04	2019-05-16 21:00:51.235-04
+10	102 N End Ave	New York	NY	123-456-7890	{-74.0158409999999947,40.7149849999999986}	2019-05-16 21:00:51.239-04	2019-05-16 21:00:51.239-04
+11	55 Church St	New York	NY	123-456-7890	{-74.010391999999996,40.7115969999999976}	2019-05-16 21:00:51.241-04	2019-05-16 21:00:51.241-04
+12	106 Bowery	New York	NY	123-456-7890	{-73.995231000000004,40.7178729999999973}	2019-05-16 21:00:51.255-04	2019-05-16 21:00:51.255-04
+13	15 Gold Street	New York	NY	123-456-7890	{-74.0071080000000023,40.7078940000000031}	2019-05-16 21:00:51.256-04	2019-05-16 21:00:51.256-04
+14	123 Washington Street	New York	NY	123-456-7890	{-74.0139970000000034,40.7091020000000015}	2019-05-16 21:00:51.257-04	2019-05-16 21:00:51.257-04
+15	85 W St at Albany St	New York	NY	123-456-7890	{-73.9895680000000056,40.7311309999999978}	2019-05-16 21:00:51.268-04	2019-05-16 21:00:51.268-04
+16	95 W Broadway	New York	NY	123-456-7890	{-74.0089219999999983,40.7156809999999965}	2019-05-16 21:00:51.269-04	2019-05-16 21:00:51.269-04
+17	140 Washington St	New York	NY	123-456-7890	{-74.0139400000000052,40.7096299999999971}	2019-05-16 21:00:51.271-04	2019-05-16 21:00:51.271-04
+18	6301 8th Avenue	Brooklyn	NY	123-123-1231	{-74.0109999999999957,40.6330000000000027}	2019-05-16 21:00:51.273-04	2019-05-16 21:00:51.273-04
+19	75 Wall St	New York	NY	123-456-7890	{-74.0139400000000052,40.7051370000000006}	2019-05-16 21:00:51.274-04	2019-05-16 21:00:51.274-04
+20	134 Reade St	New York	NY	123-456-7890	{-74.0095670000000041,40.7165260000000018}	2019-05-16 21:00:51.276-04	2019-05-16 21:00:51.276-04
+21	99 Hudson St	New York	NY	123-456-7890	{-74.0089289999999949,40.7189770000000024}	2019-05-16 21:00:51.277-04	2019-05-16 21:00:51.277-04
+22	16 Mott St	New York	NY	123-456-7890	{-73.9985089999999985,40.7142300000000006}	2019-05-16 21:00:51.278-04	2019-05-16 21:00:51.278-04
+23	2 Harrison St	New York	NY	123-456-7890	{-74.008899999999997,40.7186790000000016}	2019-05-16 21:00:51.279-04	2019-05-16 21:00:51.279-04
+24	120 Broadway	New York	NY	123-456-7890	{-74.0108460000000008,40.708475}	2019-05-16 21:00:51.28-04	2019-05-16 21:00:51.28-04
+25	128 E 7th St	New York	NY	123-456-7890	{-73.9841519999999946,40.7260959999999983}	2019-05-16 21:00:51.281-04	2019-05-16 21:00:51.281-04
+26	9 Pell St	New York	NY	123-456-7890	{-73.997760999999997,40.7146010000000018}	2019-05-16 21:00:51.283-04	2019-05-16 21:00:51.283-04
+27	79 Orchard St	New York	NY	123-456-7890	{-73.9905650000000037,40.7177190000000024}	2019-05-16 21:00:51.284-04	2019-05-16 21:00:51.284-04
+28	141 Duane St	New York	NY	123-456-7890	{-74.0077239999999961,40.7164029999999997}	2019-05-16 21:00:51.284-04	2019-05-16 21:00:51.284-04
+29	60 Thompson St	New York	NY	123-456-7890	{-74.0032420000000002,40.7240139999999968}	2019-05-16 21:00:51.285-04	2019-05-16 21:00:51.285-04
+30	5 Bleecker St	New York	NY	123-456-7890	{-73.9926619999999957,40.7254950000000022}	2019-05-16 21:00:51.285-04	2019-05-16 21:00:51.285-04
+31	165 Allen St	New York	NY	123-456-7890	{-73.9897559999999999,40.721266}	2019-05-16 21:00:51.286-04	2019-05-16 21:00:51.286-04
+32	39 Downing St	New York	NY	123-456-7890	{-74.0038749999999936,40.7292690000000022}	2019-05-16 21:00:51.286-04	2019-05-16 21:00:51.286-04
+33	86 Mulberry St	New York	NY	123-456-7890	{-73.9986260000000016,40.716543999999999}	2019-05-16 21:00:51.287-04	2019-05-16 21:00:51.287-04
+34	Bay 8th St	Brooklyn	NY	123-123-1221	{-74.0160000000000053,40.6069999999999993}	2019-05-16 21:00:51.288-04	2019-05-16 21:00:51.288-04
+35	133 Canal St	New York	NY	123-456-7890	{-73.9953150000000051,40.7162909999999982}	2019-05-16 21:00:51.288-04	2019-05-16 21:00:51.288-04
+36	19 Fulton St	New York	NY	123-456-7890	{-74.0036020000000008,40.7071189999999987}	2019-05-16 21:00:51.289-04	2019-05-16 21:00:51.289-04
+37	1 Liberty Plz Lbby 2	New York	NY	123-456-7890	{-74.0131200000000007,40.7093289999999968}	2019-05-16 21:00:51.289-04	2019-05-16 21:00:51.289-04
+38	1 Albany St	New York	NY	123-456-7890	{-74.0131570000000067,40.7091890000000021}	2019-05-16 21:00:51.29-04	2019-05-16 21:00:51.29-04
+39	State St & Battery Pl	New York	NY	123-456-7890	{-74.0143340000000052,40.7045310000000029}	2019-05-16 21:00:51.29-04	2019-05-16 21:00:51.29-04
+40	4 S St	New York	NY	123-456-7890	{-74.0130685999999969,40.7010300000000029}	2019-05-16 21:00:51.291-04	2019-05-16 21:00:51.291-04
+41	65 Bayard St	New York	NY	123-456-7890	{-73.9981899999999939,40.7153229999999979}	2019-05-16 21:00:51.291-04	2019-05-16 21:00:51.291-04
+42	244 5th Ave	New York	NY	123-456-7890	{-73.9877079999999978,40.7446100000000015}	2019-05-16 21:00:51.292-04	2019-05-16 21:00:51.292-04
+43	434 Lafayette St	New York	NY	123-456-7890	{-73.9921039999999977,40.7293730000000025}	2019-05-16 21:00:51.292-04	2019-05-16 21:00:51.292-04
+44	103 Prince St	New York	NY	123-456-7890	{-73.9991440000000011,40.7249180000000024}	2019-05-16 21:00:51.293-04	2019-05-16 21:00:51.293-04
+45	Pier 1	New York	NY	123-456-7890	{-73.9965629999999948,40.7022249999999985}	2019-05-16 21:00:51.293-04	2019-05-16 21:00:51.293-04
+46	Ellis Island	New York	NY	123-456-7890	{-74.0403170000000017,40.6992970000000014}	2019-05-16 21:00:51.294-04	2019-05-16 21:00:51.294-04
+47	1 Washington Sq E	New York	NY	123-456-7890	{-73.9986490000000003,40.732204000000003}	2019-05-16 21:00:51.294-04	2019-05-16 21:00:51.294-04
+48	Union Sq & W 14th St	New York	NY	123-456-7890	{-73.987994999999998,40.7336150000000004}	2019-05-16 21:00:51.294-04	2019-05-16 21:00:51.294-04
+49	828 Broadway	New York	NY	123-456-7890	{-73.990870000000001,40.7332740000000015}	2019-05-16 21:00:51.295-04	2019-05-16 21:00:51.295-04
+\.
+
+
+--
+-- Data for Name: restaurants; Type: TABLE DATA; Schema: public; Owner: Kenzo-Wong
+--
+
+COPY public.restaurants (id, name, cuisine, price, "createdAt", "updatedAt", "placeId") FROM stdin;
+1	Fei Long Market	Chinese	1	2019-05-16 21:00:51.07-04	2019-05-16 21:00:51.07-04	18
+2	Bouley	French	4	2019-05-16 21:00:51.071-04	2019-05-16 21:00:51.071-04	19
+3	Marc Forgione	Seafood	3	2019-05-16 21:00:51.071-04	2019-05-16 21:00:51.071-04	20
+4	Hop Lee Restaurant	Chinese	2	2019-05-16 21:00:51.073-04	2019-05-16 21:00:51.073-04	22
+5	Tamarind	Indian	3	2019-05-16 21:00:51.072-04	2019-05-16 21:00:51.072-04	21
+6	Jungsik	Korean	4	2019-05-16 21:00:51.074-04	2019-05-16 21:00:51.074-04	23
+7	The Capital Grille	Steakhouses, American	4	2019-05-16 21:00:51.075-04	2019-05-16 21:00:51.075-04	24
+8	Pylos	Greek	3	2019-05-16 21:00:51.076-04	2019-05-16 21:00:51.076-04	25
+9	Joe's Shanghai	Shanghainese, Dim Sum	2	2019-05-16 21:00:51.078-04	2019-05-16 21:00:51.078-04	26
+10	Cafe Katja	German, Austrian	2	2019-05-16 21:00:51.079-04	2019-05-16 21:00:51.079-04	27
+11	Rosanjin	Japanese	3	2019-05-16 21:00:51.08-04	2019-05-16 21:00:51.08-04	28
+12	Kittichai	Thai	4	2019-05-16 21:00:51.081-04	2019-05-16 21:00:51.081-04	29
+13	Bianca Restaurant	Italian	2	2019-05-16 21:00:51.082-04	2019-05-16 21:00:51.082-04	30
+14	Rayuela	Spanish, Latin American	3	2019-05-16 21:00:51.083-04	2019-05-16 21:00:51.083-04	31
+15	Mas Farmhouse	New American, French	4	2019-05-16 21:00:51.083-04	2019-05-16 21:00:51.083-04	32
+16	Xe Lua	Vietnamese	1	2019-05-16 21:00:51.084-04	2019-05-16 21:00:51.084-04	33
+\.
+
+
+--
+-- Name: activities_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Kenzo-Wong
+--
+
+SELECT pg_catalog.setval('public.activities_id_seq', 16, true);
+
+
+--
+-- Name: hotels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Kenzo-Wong
+--
+
+SELECT pg_catalog.setval('public.hotels_id_seq', 17, true);
+
+
+--
+-- Name: places_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Kenzo-Wong
+--
+
+SELECT pg_catalog.setval('public.places_id_seq', 49, true);
+
+
+--
+-- Name: restaurants_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Kenzo-Wong
+--
+
+SELECT pg_catalog.setval('public.restaurants_id_seq', 16, true);
+
+
+--
+-- Name: activities activities_pkey; Type: CONSTRAINT; Schema: public; Owner: Kenzo-Wong
+--
+
+ALTER TABLE ONLY public.activities
+    ADD CONSTRAINT activities_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: hotels hotels_pkey; Type: CONSTRAINT; Schema: public; Owner: Kenzo-Wong
+--
+
+ALTER TABLE ONLY public.hotels
+    ADD CONSTRAINT hotels_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: places places_pkey; Type: CONSTRAINT; Schema: public; Owner: Kenzo-Wong
+--
+
+ALTER TABLE ONLY public.places
+    ADD CONSTRAINT places_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: restaurants restaurants_pkey; Type: CONSTRAINT; Schema: public; Owner: Kenzo-Wong
+--
+
+ALTER TABLE ONLY public.restaurants
+    ADD CONSTRAINT restaurants_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: activities activities_placeId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Kenzo-Wong
+--
+
+ALTER TABLE ONLY public.activities
+    ADD CONSTRAINT "activities_placeId_fkey" FOREIGN KEY ("placeId") REFERENCES public.places(id) ON UPDATE CASCADE ON DELETE SET NULL;
+
+
+--
+-- Name: hotels hotels_placeId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Kenzo-Wong
+--
+
+ALTER TABLE ONLY public.hotels
+    ADD CONSTRAINT "hotels_placeId_fkey" FOREIGN KEY ("placeId") REFERENCES public.places(id) ON UPDATE CASCADE ON DELETE SET NULL;
+
+
+--
+-- Name: restaurants restaurants_placeId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Kenzo-Wong
+--
+
+ALTER TABLE ONLY public.restaurants
+    ADD CONSTRAINT "restaurants_placeId_fkey" FOREIGN KEY ("placeId") REFERENCES public.places(id) ON UPDATE CASCADE ON DELETE SET NULL;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
