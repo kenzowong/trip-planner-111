@@ -33,7 +33,7 @@ app.use(function(err, req, res, next) {
 });
 
 // listen on a port
-const PORT = 3000;
+const PORT = process.env.DATABASE_URL || 3000;
 
 const init = async function() {
   await db.sync({});
