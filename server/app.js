@@ -33,12 +33,15 @@ app.use(function(err, req, res, next) {
 });
 
 // listen on a port
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000;
+
+const host = '0.0.0.0';
+const port = process.env.PORT || 3000;
 
 const init = async function() {
   await db.sync({});
-  app.listen(PORT, function() {
-    console.log(`Server is listening on port ${PORT}!`);
+  app.listen(port, host, function() {
+    console.log('Server started.......');
   });
 };
 
