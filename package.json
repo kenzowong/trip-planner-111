@@ -1,0 +1,30 @@
+{
+  "name": "trip-planner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "npm run start-server & npm run build-watch",
+    "start-server": "nodemon server/app.js --ignore public",
+    "build-watch": "webpack -w",
+    "start": "npm run start:dev",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node seed.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "db-seed": "^1.2.0",
+    "nodemon": "^1.18.3"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "mapbox-gl": "^0.46.0",
+    "pg": "^7.10.0",
+    "sequelize": "^5.8.0",
+    "volleyball": "^1.5.1",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2"
+  }
+}
